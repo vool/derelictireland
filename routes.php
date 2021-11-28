@@ -65,5 +65,7 @@ $router->mount('/actions', function () use ($router) {
 
     //$router->get('/import', 'ActionsController@import');
 
+    //$router->get('/init', 'DbSetupController@initDB');
+
     $router->get('/update-players', 'ActionsController@updatePlayers');
 });
