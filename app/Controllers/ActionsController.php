@@ -1,12 +1,12 @@
 <?php
 
 
-namespace CycleSpaceInvaders\Controllers;
+namespace DerelictIreland\Controllers;
 
 use Carbon\Carbon;
 use DG\Twitter\Twitter;
 use DG\Twitter\Exception;
-use CycleSpaceInvaders\Controllers\Controller;
+use DerelictIreland\Controllers\Controller;
 
 class ActionsController extends Controller
 {
@@ -31,6 +31,63 @@ class ActionsController extends Controller
 
 
     public function import()
+    {
+        $this->logger->info("Doing import");
+
+        function in_arrayi($needle, $haystack)
+        {
+            return in_array(strtolower($needle), array_map('strtolower', $haystack));
+        }
+
+
+        $array = array_map('str_getcsv', file('../tweet_urls.csv'));
+
+        $chunks = array_chunk($array, 50);
+
+        $i =0;
+
+        foreach ($chunks as $chunk) {
+            $t_ids = array();
+
+            foreach ($chunk as $a) {
+                $t_ids[] = preg_replace("/^.*\//","",$a[0]);
+            }
+
+            $tweet_ids = implode(',', $t_ids);
+
+            echo 'processing chunk - '. $tweet_ids. '<br>';
+
+            //if($i>5){
+
+            //$tweets = $this->twitter->request('statuses/lookup', 'GET', ['id' => "$tweet_ids", 'include_entities'=>true, 'tweet_mode' => 'extended']);
+
+            //$this->ingest($tweets);
+
+            //}
+
+
+            //   if($i > 10){
+            //   dd('done');
+            // }
+            $i++;
+        }
+
+
+        // $tweets = $this->twitter->request('statuses/lookup', 'GET', ['id' => $tweet_ids, 'include_entities'=>true, 'tweet_mode' => 'extended']);
+        //
+        // header('Content-Type: application/json');
+        // //
+        // echo JSON_encode($tweets);
+        // exit;
+        //
+        //
+        // $this->ingest($tweets);
+    }
+
+
+
+
+    public function import_twitterscraper()
     {
         $this->logger->info("Doing import");
 
@@ -118,7 +175,16 @@ class ActionsController extends Controller
         $opts['since_id'] = $this->getLatestStatusId(); // todo this is the last tweet in the db (ie last tweet with media) rather thans the last tweet parsed
         //  $opts['since_id'] = 610341092790259712;//1218635639794688000; //$this->getLatestStatusId();// $previous_tweet_id;
 
-        $tweets=$this->twitter->search($opts);
+        try{
+
+                $tweets=$this->twitter->search($opts);
+
+              } catch (Exception $e) {
+
+        echo "Error: ", $e->getMessage();
+
+        }
+
 
         $this->ingest($tweets);
     }
@@ -126,6 +192,8 @@ class ActionsController extends Controller
 
     private function ingest($tweets, $welcome = false)
     {
+        $this->logger->info("Doing ingest");
+
 
       // get the town list
         $sql = 'SELECT LOWER(`townName`) FROM `towns`';

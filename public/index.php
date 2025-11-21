@@ -1,5 +1,5 @@
 <?php
-namespace CycleSpaceInvaders;
+namespace DerelictIreland;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -32,7 +32,7 @@ $router = new Router();
 
 //$settings = require __DIR__ . '/../settings.php';
 
-$router->setNamespace('\CycleSpaceInvaders\Controllers');
+$router->setNamespace('\DerelictIreland\Controllers');
 
 // Load our custom routes
 require_once '../routes.php';

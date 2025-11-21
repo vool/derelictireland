@@ -1,9 +1,9 @@
 <?php
-namespace CycleSpaceInvaders\Controllers;
+namespace DerelictIreland\Controllers;
 
-use CycleSpaceInvaders\Controllers\Controller;
+use DerelictIreland\Controllers\Controller;
 
-class InvaderController extends Controller
+class PostController extends Controller
 {
 
   // Per Page
@@ -13,7 +13,7 @@ class InvaderController extends Controller
     {
         parent::__construct();
 
-        $this->ppage = 10;
+        $this->ppage = 9;
     }
 
     public function index($page = 1, $mode = null)//: string
@@ -92,7 +92,7 @@ class InvaderController extends Controller
         $this->tpl->addData(['title' => ' ????', 'description' => '??.', 'layout']);
 
         // Render a template
-        echo $this->tpl->render('invaders', ['name' => 'Jonathan', 'tweets' => $res, 'total' => $total_records, 'page' => $page, 'total_pages' => $total_pages, 'mode' => $mode]);
+        echo $this->tpl->render('posts', ['name' => '???', 'tweets' => $res, 'total' => $total_records, 'page' => $page, 'total_pages' => $total_pages, 'mode' => $mode]);
     }
 
     public function tag($tag, $page = 1)//: string
@@ -149,10 +149,10 @@ class InvaderController extends Controller
 
 
         // Preassign data to the layout
-        $this->tpl->addData(['title' => ' ????', 'description' => $total_records.' invaders captured for #'.$tag, 'layout']);
+        $this->tpl->addData(['title' => ' ????', 'description' => $total_records.' posts for #'.$tag, 'layout']);
 
         // Render a template
-        echo $this->tpl->render('invaders_tag', [ 'tweets' => $res, 'total' => $total_records, 'page' => $page, 'total_pages' => $total_pages, 'tag' => $tag]);
+        echo $this->tpl->render('posts_tag', [ 'tweets' => $res, 'total' => $total_records, 'page' => $page, 'total_pages' => $total_pages, 'tag' => $tag]);
     }
 
 
@@ -179,7 +179,7 @@ class InvaderController extends Controller
             $this->tpl->addData(['title' => ' ????', 'description' => '??.', 'layout']);
 
             // Render a template
-            echo $this->tpl->render('invader', ['name' => 'jjJonathan', 'data' => $res ]);
+            echo $this->tpl->render('post', ['name' => 'jjJonathan', 'data' => $res ]);
         } else {
             // Render a template
             echo $this->tpl->render('errors::404', ['error' => 'Invader not found :(']);

@@ -1,0 +1,59 @@
+<?php $v->layout('layout', ['title' => 'Players']) ?>
+
+<!-- =======Intro Single ======= -->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">Contributors</h1>
+            <span class="color-text-a"><?=$v($total)?> in total</span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Contributors
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Intro Single-->
+
+  <!-- ======= Agents Grid ======= -->
+  <section class="agents-grid grid">
+    <div class="container">
+      <div class="row">
+
+        <?php foreach ($contributors as $player){
+          $v->insert('includes::user', ['player' =>  $player]);
+          } ?>
+
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <nav class="pagination-a">
+            <?php
+            if ($total_pages >1) {
+                echo generatePageLinks($page, $total_pages, '/contributors/');
+            }
+             ?>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Agents Grid-->
+
+<?php $v->push('scripts') ?>
+    <script>
+        // Some JavaScript
+    </script>
+<?php $v->end() ?>

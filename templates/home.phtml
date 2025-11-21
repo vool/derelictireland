@@ -1,190 +1,180 @@
 <?php $v->layout('layout') ?>
 
-<div class="container home">
 
-  <div class="row">
-    <div class="col-lg-12 text-center">
-      <img src="\img\logo.png" class="mb-5 mx-auto img-fluid">
-    </div>
-
-    <div class="col-lg-12 text-center">
-      <p class="lead">
-        It is the year 2020 and Cycle Space has been INVADED.
-      </p>
-      <p class="lead">
-        The traditional defenders of Cycle Space have been rendered inactive by the crippling GDPR virus (although experts think it might just be their imagination), so it falls to you to tackle these evil invaders, have you got what it takes to
-        join the resistance ?<br>
-        <br>
-        In order to join all you have to do is to capture these invaders by posting a photo or video of them to Twitter using the hashtag <span class="hilight yellow">#FreeTheCycleLanes</span>.
-      </p>
-
-      <h2 class="red blink my-4">
-        ** Warning **
-      </h2>
-      <p class="lead">
-        This is not a game, peoples lives are at risk !
-      </p>
-
-    </div>
-  </div>
-
-  <?php $v->insert('includes::score_table') ?>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-
-        <h1 class="mb-5 purple">* RECENT INVADERS *</h1>
-
-        <div class="card-columns text-left">
-
-          <?php foreach ($tweets as $tweet):?>
-
-          <div class="card p-1">
-            <a href="/invader/<?=$v($tweet['id'])?>" class="item">
-              <!-- <img class="card-img-top img-fluid" src="..." alt="Card image cap"> -->
-
-              <?php if ($tweet['media']):
-                   $media = JSON_decode($tweet['media']);
-                   ?>
-
-              <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-
-                  <?php
-                    $flag = true;
-                    foreach ($media as $m):?>
-                  <div class="carousel-item <?php echo $flag ? ' active' : '' ;?>">
-                    <img class="d-block w-100" src="<?=$v($m->media_url_https)?>" alt="First slide">
-                  </div>
-
-                  <?php $flag= false;
-                    endforeach; ?>
-
+    <!-- ======= Services Section ======= -->
+    <!-- <section class="section-services section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Our Services</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="bi bi-cart"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">Lifestyle</h2>
                 </div>
               </div>
-
-              <?php endif; ?>
-
-              <div class="card-block pt-2">
-                <div class="row">
-
-                  <div class="col-2">
-                    <img src="<?=$v($tweet["avatar"])?>" alt="" class="mx-auto img-fluid avatar" data-pixelate data-reveal="false" data-value="0.4">
-                  </div>
-                  <div class="col-10 light-blue">
-                    <h6 class="yellow mb-0">@
-                      <?=$v($tweet["username"])?>
-                    </h6>
-                    <?=$v(Carbon\Carbon::parse($tweet['created_at'])->format('d/m/y'))?>
-                  </div>
-
-                </div>
-                <p class="card-text">
-                  <?=$v($tweet['text'])?>
+              <div class="card-body-c">
+                <p class="content-c">
+                  Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
+                  convallis a pellentesque
+                  nec, egestas non nisi.
                 </p>
               </div>
-            </a>
-          </div>
-
-          <?php endforeach; ?>
-
-        </div>
-
-        <h3 class="my-4">
-          <a href="/invaders">
-            << VIEW <?=$v($total_invaders)?> INVADERS >>
-          </a>
-        </h3>
-
-        <img src="/img/game_shot.png" class="my-5 mx-auto img-fluid"/>
-
-        <h1 class="my-4 purple">* PLAYERS *</h1>
-
-        <div class="container players">
-
-          <div class="row">
-
-            <?php foreach ($players as $player): ?>
-
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 box">
-              <a href="/player/@<?=$v($player["username"])?>" class="" >
-
-                <div class="my-2">
-                  <img class="mx-auto" src="<?=$v(largeAvatar($player["avatar"]))?>" data-pixelate data-reveal="false" data-value="0.2"/>
-                </div>
-                <div>
-                  @<?=$v($player["username"])?>
-                </div>
-                <div class="location">
-                  <?=$v($player["location"])?>
-                </div>
-              </a>
-
+              <div class="card-footer-c">
+                <a href="#" class="link-c link-icon">Read more
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
             </div>
-
-            <?php endforeach ?>
-
           </div>
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="bi bi-calendar4-week"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">Loans</h2>
+                </div>
+              </div>
+              <div class="card-body-c">
+                <p class="content-c">
+                  Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Mauris blandit
+                  aliquet elit, eget tincidunt
+                  nibh pulvinar a.
+                </p>
+              </div>
+              <div class="card-footer-c">
+                <a href="#" class="link-c link-icon">Read more
+                  <span class="bi bi-calendar4-week"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="bi bi-card-checklist"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">Sell</h2>
+                </div>
+              </div>
+              <div class="card-body-c">
+                <p class="content-c">
+                  Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
+                  convallis a pellentesque
+                  nec, egestas non nisi.
+                </p>
+              </div>
+              <div class="card-footer-c">
+                <a href="#" class="link-c link-icon">Read more
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!-- End Services Section -->
 
+    <!-- ======= Latest Properties Section ======= -->
+    <section class="section-property section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Latest Posts</h2>
+              </div>
+              <div class="title-link">
+                <a href="/posts">All <?=$v($total_posts)?> Posts
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <h3 class="m-4"><a href="/players">
-            << VIEW ALL <?=$v($total_players)?> PLAYERS >>
-          </a></h3>
+        <section class="property-grid grid">
+          <div class="container">
+            <div class="row">
+              <!-- <div class="col-sm-12">
+                <div class="grid-option">
+                  <form>
+                    <select class="custom-select">
+                      <option selected>All</option>
+                      <option value="1">New to Old</option>
+                      <option value="2">For Rent</option>
+                      <option value="3">For Sale</option>
+                    </select>
+                  </form>
+                </div>
+              </div> -->
+
+
+
+              <?php
+                foreach ($tweets as $tweet) {
+                    $v->insert('includes::tweet', ['tweet' =>  $tweet]);
+                }
+                ?>
+
+
+
+
+
+
+            </div></div>
 
       </div>
-    </div>
-  </div>
+    </section><!-- End Latest Properties Section -->
+
+    <!-- ======= Agents Section ======= -->
+    <section class="section-agents section-t8 agents-grid grid">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Contributors</h2>
+              </div>
+              <div class="title-link">
+                <a href="/contributors">All <?=$v($total_players)?> Contributors
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+          <div class="row">
+        <?php foreach ($contributors as $player) {
+                    $v->insert('includes::user', ['player' =>  $player]);
+                } ?>
+        </div>
+      </div>
+    </section><!-- End Agents Section -->
 
 
 
 
-  <div class="container leaderboard">
-
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h1 class="my-4 red">*** Hi Score ***</h1>
-
-    <table class="h4 m-5">
-      <thead>
-        <tr>
-          <th scope="col">RANK</th>
-          <th scope="col">NAME</th>
-          <th scope="col">SCORE</th>
-        </tr>
-      </thead>
-      <tbody>
-
-        <?php
-        $i = 1;
-        foreach ($leaders as $user): ?>
-          <tr>
-            <td scope="row"><?=$v($i)?></td>
-            <td>
-              <a href="/player/@<?=$v($user["username"])?>">
-                <!-- <img class="mx-auto rounded-circle img-fluid" src="<?=$v($user["avatar"])?>" width="50px"/>-->
-                @<?=$v($user["username"])?>
-              </a>
-          </td>
-            <td><?=$v($user["total_score"])?></td>
-            <td> </td>
-          </tr>
-
-    <?php
-    $i ++;
-    endforeach ?>
-
-      </tbody>
-    </table>
-
-    </div>
-    </div>
-  </div>
 
 
-
-  <?php $v->insert('includes::game_credits') ?>
 
   <?php $v->push('scripts') ?>
   <script>

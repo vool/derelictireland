@@ -1,7 +1,7 @@
 <?php
-namespace CycleSpaceInvaders\Controllers;
+namespace DerelictIreland\Controllers;
 
-use CycleSpaceInvaders\Controllers\Controller;
+use DerelictIreland\Controllers\Controller;
 
 class LeaderBoardController extends Controller
 {

@@ -1,47 +1,58 @@
+<div class="col-md-4">
+  <div class="card-box-a card-shadow">
+      <a href="/post/<?=$v($tweet['id'])?>" class="stretched-link">
+    <div class="img-box-a">
 
-         <div class="card p-1">
-           <a href="/invader/<?=$v($tweet['id'])?>" class="item">
-           <!-- <img class="card-img-top img-fluid" src="..." alt="Card image cap"> -->
 
-           <?php if ($tweet['media']):
-             $media = JSON_decode($tweet['media']);
-             ?>
+      <?php if ($tweet['media']):
+        $media = JSON_decode($tweet['media']);
+        ?>
 
-             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                  <div class="carousel-inner">
+      <img src="<?=$v($media[0]->media_url_https)?>" alt="" class="img-a img-fluid">
 
-              <?php
-              $flag = true;
-              foreach ($media as $m):?>
-                <div class="carousel-item <?php echo $flag ? ' active' : '' ;?>">
-                  <img class="d-block w-100" src="<?=$v($m->media_url_https)?>" alt="First slide">
-                </div>
+       <?php endif; ?>
+    </div>
 
-                <?php $flag= false;
-              endforeach; ?>
-
-            </div>
+    <div class="card-overlay">
+      <div class="card-overlay-a-content">
+        <div class="card-header-a">
+          <h2 class="card-title-a">
+            <?php
+             foreach (JSON_decode($tweet['hashtags']) as $tag):
+            ?>
+            #<?=$v($tag)?>
+            <?php
+                  endforeach; ?>
+          </h2>
+        </div>
+        <div class="card-body-a">
           </div>
+        <div class="card-footer-a">
+          <ul class="card-info d-flex justify-content-around">
+            <li>
+              <?php if(isset($tweet["username"])){ ?>
+              <h4 class="card-info-title">Posted by</h4>
+              <span>@<?=$v($tweet["username"])?></span>
+            <?php } ?>
+            </li>
+            <li>
+              <h4 class="card-info-title">Date</h4>
+              <span><?=$v(Carbon\Carbon::parse($tweet['created_at'])->format('d/m/y'))?>
+              </span>
+            </li>
+            <!-- <li>
+              <h4 class="card-info-title">Baths</h4>
+              <span>4</span>
+            </li>
+            <li>
+              <h4 class="card-info-title">Garages</h4>
+              <span>1</span>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+      </a>
+  </div>
 
-
-           <?php endif; ?>
-
-           <div class="card-block pt-2">
-             <div class="row">
-                <?php if (isset($tweet["avatar"])): ?>
-                <div class="col-2">
-                  <img src="<?=$v($tweet["avatar"])?>" alt="" class="mx-auto img-fluid avatar" data-pixelate data-reveal="false" data-value="0.4">
-                </div>
-                <?php endif; ?>
-                <div class="col-10 light-blue">
-                  <?php if (isset($tweet["username"])): ?>
-                  <h6 class="yellow mb-0">@<?=$v($tweet["username"])?></h6>
-                <?php endif; ?>
-                <?=$v(Carbon\Carbon::parse($tweet['created_at'])->format('d/m/y'))?>
-                </div>
-
-                </div>
-             <p class="card-text"><?=$v($tweet['text'])?></p>
-           </div>
-         </a>
-         </div>
+</div>

@@ -3,28 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="<?=$v(isset($description) ? $description :'Cycle Space has been INVADED ! Join in capturing these invaders #FreeTheCycleLanes.')?>">
+  <meta name="description" content="<?=$v(isset($description) ? $description :'Cataloguing #DerelictIreland')?>">
   <meta name="author" content="Keith Phelan">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@CycleInvaders">
+  <meta name="twitter:site" content="http://derelictireland.vool.ie/">
   <meta name="twitter:creator" content="@TweetPhelan">
-  <meta name="twitter:title" content="<?=$v($title)?> | Cycle Space Invaders">
-  <meta name="twitter:description" content="<?=$v(isset($description) ? $description :'Cycle Space has been INVADED ! Join in capturing these invaders, lets #FreeTheCycleLanes..')?>">
-  <meta name="twitter:image" content="<?=$v(isset($card) ? $card : 'http://cyclespaceinvaders.com/img/card.png')?>">
+  <meta name="twitter:title" content="<?=$v($title)?> | #DerelictIreland">
+  <meta name="twitter:description" content="<?=$v(isset($description) ? $description :'Cataloguing #DerelictIreland')?>">
+  <meta name="twitter:image" content="<?=$v(isset($card) ? $card : 'http://derelictireland.vool.ie/img/card.png')?>">
 
-  <title><?=$v($title)?> | Cycle Space Invaders</title>
+  <title><?=$v($title)?> | Derelict Ireland</title>
 
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/node_modules/swiper/swiper-bundle.min.css" >
   <link rel="stylesheet" href="/css/style.css" >
   <link rel="stylesheet" href="/css/menu.css" >
 
   <!-- Fontz -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /> <!-- ?? -->
 
-  <style></style>
+  <?=$v->section('style')?>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-19051681-6"></script>
@@ -33,47 +34,126 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-19051681-6');
+  gtag('config', 'G-H3M3LTN9CS');
   //TODO move to ENV
 </script>
 
 </head>
 <body>
 
-<header class="head-main">
+<!-- <header class="head-main"> -->
   <?php $v->insert('includes::nav') ?>
-  </header>
 
-  <main role="main" class="container">
+<?php if(false){ ?>
+  <!-- ======= Intro Section ======= -->
+  <div class="intro intro-carousel swiper position-relative">
 
-            <?php if (isset($hiscore)):?>
-            HI-SCCORE
-            <br>
-            <?=$v($hiscore);
-          endif;?>
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-1.jpg)">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <p class="intro-title-top">Doral, Florida
+                      <br> 78345
+                    </p>
+                    <h1 class="intro-title mb-4 ">
+                      <span class="color-b">204 </span> Mount
+                      <br> Olive Road Two
+                    </h1>
+                    <p class="intro-subtitle intro-price">
+                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-2.jpg)">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <p class="intro-title-top">Doral, Florida
+                      <br> 78345
+                    </p>
+                    <h1 class="intro-title mb-4">
+                      <span class="color-b">204 </span> Rino
+                      <br> Venda Road Five
+                    </h1>
+                    <p class="intro-subtitle intro-price">
+                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-3.jpg)">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <p class="intro-title-top">Doral, Florida
+                      <br> 78345
+                    </p>
+                    <h1 class="intro-title mb-4">
+                      <span class="color-b">204 </span> Alira
+                      <br> Roan Road One
+                    </h1>
+                    <p class="intro-subtitle intro-price">
+                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div><!-- End Intro Section -->
+<?php } ?>
+  <!-- </header> -->
+
+  <main role="main" id="main">
 
       <?=$v->section('content')?>
+
+        </main>
       <?php $v->insert('includes::footer') ?>
-  </main>
+      <div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
 
   <!-- Core JavaScript libs -->
   <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
+  <script src="/node_modules/swiper/swiper-bundle.min.js"></script>
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/pixelate.min.js"></script>
-  <script src="/node_modules/masonry-layout/dist/masonry.pkgd.min.js"></script>
-  <script src="/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
 
   <?=$v->section('scripts')?>
 
   <script>
-
-  $(document).ready(function(){
-    $('.nav-button').click(function(){
-  	$('body').toggleClass('nav-open');
-    });
-});
-
   </script>
+
+  <!-- Template Main JS File -->
+<script src="/js/main.js"></script>
 
 </body>
 </html>

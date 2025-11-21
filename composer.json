@@ -1,5 +1,5 @@
 {
-  "name": "keith/cyclespaceinvaders",
+  "name": "vool/derelictireland",
   "authors": [{
     "name": "Keith",
     "email": "keith@vool.ie"
@@ -14,7 +14,7 @@
   },
   "autoload": {
     "psr-4": {
-      "CycleSpaceInvaders\\": "app/"
+      "DerelictIreland\\": "app/"
     },
     "files": [
       "app/helpers.php"

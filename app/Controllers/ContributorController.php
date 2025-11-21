@@ -1,7 +1,7 @@
 <?php
-namespace CycleSpaceInvaders\Controllers;
+namespace DerelictIreland\Controllers;
 
-use CycleSpaceInvaders\Controllers\Controller;
+use DerelictIreland\Controllers\Controller;
 
 class PlayerController extends Controller
 {
@@ -16,7 +16,7 @@ class PlayerController extends Controller
     {
         //  $this->id = $id;
         parent::__construct();
-        $this->ppage = 20;
+        $this->ppage = 18;
     }
 
     /*
@@ -63,7 +63,7 @@ class PlayerController extends Controller
         $this->tpl->addData(['title' => ' ????', 'description' => '??.', 'layout']);
 
         // Render a template
-        echo $this->tpl->render('players', ['name' => 'jjJonathan', 'players' => $res, 'total' => $total_records, 'page' => $page, 'total_pages' => $total_pages ]);
+        echo $this->tpl->render('contributors', ['name' => '??', 'contributors' => $res, 'total' => $total_records, 'page' => $page, 'total_pages' => $total_pages ]);
     }
 
     /*
@@ -143,7 +143,7 @@ class PlayerController extends Controller
         // If out of bounds, send em home
                   if ($page > 0 && count($tweets) == 0) { // todo - this shod be for user info ?
 
-                  header("location: /player/@".$username);
+                  header("location: /contributor/@".$username);
 
                       //exit; si this needed
                   }
@@ -223,9 +223,9 @@ class PlayerController extends Controller
         //$total = count($tweets);
 
         // Preassign data to the layout
-        $this->tpl->addData(['title' => '@'.$user['username'].' is capturing invaders !', 'description' => '@'.$user['username'].' is playing Cycle Space Invaders, their Hi-Score is '.$score.' with '.$total_records.' invaders captured so far, chapeau !']);
+        $this->tpl->addData(['title' => '@'.$user['username'].' is documenting #DerelictIreland !', 'description' => '@'.$user['username'].' is is documenting #DerelictIreland with '.$total_records.' post to date !']);
 
         // Render a template
-        echo $this->tpl->render('player', ['tweets' => $tweets, 'total' => $total_records, 'page' => $page, 'total_pages' => $total_pages, 'user' => $user, 'last_active' => $last_active, 'score' => $score  ]);
+        echo $this->tpl->render('contributor', ['tweets' => $tweets, 'total' => $total_records, 'page' => $page, 'total_pages' => $total_pages, 'user' => $user, 'last_active' => $last_active, 'score' => $score  ]);
     }
 }

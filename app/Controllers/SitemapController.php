@@ -1,7 +1,7 @@
 <?php
-namespace CycleSpaceInvaders\Controllers;
+namespace DerelictIreland\Controllers;
 
-use CycleSpaceInvaders\Controllers\Controller;
+use DerelictIreland\Controllers\Controller;
 
 class SitemapController extends Controller
 {
@@ -80,7 +80,7 @@ class SitemapController extends Controller
 
         if ($res) {
             foreach ($res as $r) {
-                $link = $this->url.'/player/@'.$this::clean($r['username']);
+                $link = $this->url.'/contributor/@'.$this::clean($r['username']);
                 $this->feed($link, a);
             }
         }
@@ -100,7 +100,7 @@ class SitemapController extends Controller
 
         if ($res) {
             foreach ($res as $r) {
-                $link = $this->url.'/invader/'.$this::clean($r['id']);
+                $link = $this->url.'/post/'.$this::clean($r['id']);
                 $this->feed($link, m);
             }
         }

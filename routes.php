@@ -14,29 +14,29 @@ $router->before('GET', '/.*', function () {
 $router->get('/', 'HomeController@home');
 
   $router->get('/(\d+)', function ($page) use ($router) {
-      call_user_func_array([new CycleSpaceInvaders\Controllers\HomeController,'Home'], [$page]);
+      call_user_func_array([new DerelictIreland\Controllers\HomeController,'Home'], [$page]);
   });
 
 // Static route: /hello
-$router->get('/leader-board(/\w+)?', 'LeaderBoardController@allTime');//function () use ($tpl) {);
+// $router->get('/leader-board(/\w+)?', 'LeaderBoardController@allTime');//function () use ($tpl) {);
 
 /*
-Invaders
+Posts
 */
 
-$router->get('/tag(/\w+)?(/\d+)?', 'InvaderController@tag');
+$router->get('/tag(/\w+)?(/\d+)?', 'PostController@tag');
 
-$router->get('/invaders(/\d+)?(/\w+)?', 'InvaderController@index');
+$router->get('/posts(/\d+)?(/\w+)?', 'PostController@index');
 
-$router->get('/invader(/\d+)?', 'InvaderController@show');
+$router->get('/post(/\d+)?', 'PostController@show');
 
 /*
 Players
 */
-$router->get('/players(/\d+)?', 'PlayerController@index');
+$router->get('/contributors(/\d+)?', 'PlayerController@index');
 
-$router->get('/player/(@\w+)(/\d+)?', function ($username, $page) {
-    call_user_func_array([new CycleSpaceInvaders\Controllers\PlayerController,'Show'], [$username, is_null($page) ? 1 : $page]);
+$router->get('/contributor/(@\w+)(/\d+)?', function ($username, $page) {
+    call_user_func_array([new DerelictIreland\Controllers\PlayerController,'Show'], [$username, is_null($page) ? 1 : $page]);
 });
 
 /*
@@ -49,7 +49,9 @@ Map
 // Static route: /hello
 //$router->get('/free-the-what-now', 'PageController@what');
 
-$router->get('/get-involved', 'PageController@getInvolved');
+// $router->get('/get-involved', 'PageController@getInvolved');
+
+ $router->get('/collage', 'PageController@collage');
 
 /*
 Sitemap

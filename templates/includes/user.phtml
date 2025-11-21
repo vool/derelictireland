@@ -1,0 +1,32 @@
+                  <div class="col-md-4">
+                    <div class="card-box-d">
+                      <div class="card-img-d">
+                        <img src="<?=$v(largeAvatar($player["avatar"]))?>" alt="" class="img-d img-fluid player-profile-img">
+                      </div>
+                      <div class="card-overlay card-overlay-hover">
+                        <div class="card-header-d">
+                          <div class="card-title-d align-self-center">
+                            <h3 class="title-d">
+                              <a href="/contributor/@<?=$v($player["username"])?>" class="link-two" >
+                                <?=$v($player["screenname"])?>
+                                <br>
+                                <small>@<?=$v($player["username"])?></small>
+                                </a>
+                            </h3>
+
+                          </div>
+                        </div>
+                        <div class="card-body-d">
+                          <p class="content-d color-text-w">
+                            <?=$v($player["description"])?>
+                          </p>
+                          <div class="info-agents color-a">
+                            <p>
+                              <?=$v($player["location"])?>
+                            </p>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>

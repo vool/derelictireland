@@ -1,20 +1,27 @@
-<div class="navbar">
-    <div class="container d-flex justify-content-between">
-      <!-- <a href="#" class="navbar-brand d-flex align-items-center">
-        <strong>CYCLE SPACE<br>INVADERS</strong>
-      </a> -->
-      <a class="nav-button ml-auto mr-4"><span id="nav-icon3"><span></span><span></span><span></span><span></span></span></a>
-    </div>
-  </div> <!--navbar end-->
+<!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="/">#Derelict<span class="color-b">Ireland</span></a>
+      <div class="navbar-collapse collapse justify-content-end" id="navbar">
+        <ul class="navbar-nav">
 
-  <div class="fixed-top main-menu">
-    <div class="flex-center p-5">
-      <ul class="nav flex-column">
-        <li class="nav-item delay-1"><a class="nav-link  red" href="/">HOME</a></li>
-        <li class="nav-item delay-2"><a class="nav-link purple" href="/leader-board">LEADER BOARD</a></li>
-        <li class="nav-item delay-3"><a class="nav-link " href="/invaders">INVADERS</a></li>
-        <li class="nav-item delay-4"><a class="nav-link light-blue" href="/players">PLAYERS</a></li>
-        <li class="nav-item delay-5"><a class="nav-link yellow blink" href="/get-involved">INSERT COIN</a></li>
-      </ul>
+          <li class="nav-item">
+            <a class="nav-link <?php echo  $_SERVER['REQUEST_URI'] == '/' ? 'active' : ''; ?>" href="/">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link <?php echo  $_SERVER['REQUEST_URI'] == '/posts' ? 'active' : ''; ?>" href="/posts">Posts</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link <?php echo  $_SERVER['REQUEST_URI'] == '/contributors' ? 'active' : ''; ?>" href="/contributors">Contributors</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div> <!--main-menu end-->
+  </nav><!-- End Header/Navbar -->

@@ -1,7 +1,7 @@
 <?php
-namespace CycleSpaceInvaders\Controllers;
+namespace DerelictIreland\Controllers;
 
-use CycleSpaceInvaders\Controllers\Controller;
+use DerelictIreland\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -24,7 +24,7 @@ class HomeController extends Controller
               LEFT JOIN ".$_ENV['DB_USER_TABLE']." u
               ON t.user_id=u.id
               ORDER BY t.created_at DESC
-              LIMIT 10";
+              LIMIT 9";
 
         $stmt  = $this->dbconn->prepare($sql);
 
@@ -61,7 +61,7 @@ class HomeController extends Controller
         $stmt = $this->dbconn->prepare($sql);
         $stmt->execute();
         $row = $stmt->fetch();
-        $total_users= $row['total_records'];
+        $total_contributors= $row['total_records'];
 
         //todo - this need to be passed to all pages ?
         $high_score = "12345";
@@ -88,10 +88,10 @@ class HomeController extends Controller
 
         // Preassign data to the layout
         $this->tpl->addData(['title' => 'Home',
-                             'description' => 'Cycle Space has been INVADED ! Join '.$total_users.' players who are capturing these invaders #FreeTheCycleLanes.',
+                             'description' => 'Join '.$total_contributors.' people who are documenting #DerelictIreland.',
                              'layout'
                            ]);
         // Render a template
-        echo $this->tpl->render('home', ['tweets' => $tweets, 'players' => $users,  'total_invaders' => $total_tweets, 'total_players' => $total_users, 'high_score' => $high_score, 'leaders' => $leaders]);
+        echo $this->tpl->render('home', ['tweets' => $tweets, 'contributors' => $users,  'total_posts' => $total_tweets, 'total_players' => $total_contributors, 'high_score' => $high_score, 'leaders' => $leaders]);
     }
 }

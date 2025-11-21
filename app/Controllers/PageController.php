@@ -1,9 +1,9 @@
 <?php
 
 
-namespace CycleSpaceInvaders\Controllers;
+namespace DerelictIreland\Controllers;
 
-use CycleSpaceInvaders\Controllers\Controller;
+use DerelictIreland\Controllers\Controller;
 
 class PageController extends Controller
 {
@@ -37,5 +37,45 @@ class PageController extends Controller
     public function credit()
     {
         echo $this->tpl->render('get-involved');
+    }
+
+    public function collage()
+    {
+
+      //$sql = "SELECT id, media FROM ".$_ENV['DB_TWEET_TABLE']." LIMIT 10";
+
+      $sql = "SELECT id, media FROM ".$_ENV['DB_TWEET_TABLE'];
+
+      $stmt  = $this->dbconn->prepare($sql);
+
+      $stmt->execute();
+
+      $res = $stmt ->fetchAll(\PDO::FETCH_ASSOC);
+
+      $pics = [];
+
+      foreach($res as $r){
+
+        $media = JSON_decode($r['media']);
+
+        foreach($media as $m){
+
+          $pics[] = [$m->media_url_https.':small', $r['id']];
+
+
+          //var_dump($m->media_url_https);
+        }
+      }
+
+      shuffle($pics);
+
+      // Preassign data to the layout
+      $this->tpl->addData(['title' => ' Collage', 'description' => '', 'layout']);
+
+      // Render a template
+      echo $this->tpl->render('collage', ['name' => 'Collage', 'pics' => $pics]);
+
+
+      //echo $this->tpl->render('collage');
     }
 }

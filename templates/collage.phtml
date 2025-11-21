@@ -1,0 +1,129 @@
+<?php $v->layout('layout', ['title' => 'Derelict site collage']) ?>
+
+
+
+
+<!-- ======= Intro Single ======= -->
+<!-- <section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Collage</h1>
+          <span class="color-text-a">_</span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="/posts">Posts</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Collage
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- End Intro Single-->
+
+
+<section class="collage">
+  <div class="container-fluid">
+    <div class="row">
+
+<div class="masonry">
+
+  <?php
+  foreach ($pics as $p) { ?>
+  <div class="item">
+    <a href="/post/<?=$v($p[1])?>">
+    <img src="<?=$v($p[0])?>" loading="lazy">
+  </a>
+  </div>
+
+  <?php
+} ?>
+
+
+
+
+
+</div>
+
+
+
+    </div>
+  </div>
+
+  </section>
+
+
+
+<?php $v->push('scripts') ?>
+    <script>
+        // Some JavaScript
+    </script>
+<?php $v->end() ?>
+
+<?php $v->push('style') ?>
+
+<style>
+
+.masonry { /* Masonry container */
+    -webkit-column-count: 4;
+  -moz-column-count:4;
+  column-count: 4;
+    grid-column-gap: 0;
+column-gap:0;
+}
+.item {
+    display: inline-block;
+    width: 100%;
+  -webkit-transition: all .8s ease-in-out;
+  /* transition:1s ease all;.8 */
+  transition: all .8s ease-in-out;
+}
+.item img{max-width:100%; height: auto;}
+
+.item:hover{
+  transform: scale(1.1);
+}
+
+@media only screen and (max-width: 320px) {
+    .masonry {
+        -moz-column-count: 1;
+        -webkit-column-count: 1;
+        column-count: 1;
+    }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 768px){
+    .masonry {
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+        column-count: 2;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 1200px){
+    .masonry {
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+    }
+}
+@media only screen and (min-width: 1201px) {
+    .masonry {
+        -moz-column-count: 4;
+        -webkit-column-count: 4;
+        column-count: 4;
+    }
+}
+</style>
+<?php $v->end() ?>

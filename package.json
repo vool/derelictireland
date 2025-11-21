@@ -1,12 +1,10 @@
 {
   "dependencies": {
-    "bootstrap": "^4.4.1",
+    "bootstrap": "^5.1.3",
     "jquery": "^3.4.1",
-    "jquery-sparkline": "^2.4.0",
-    "masonry-layout": "^4.2.2"
+    "jquery-sparkline": "^2.4.0"
   },
   "scripts": {
     "build": "cp -r node_modules/ public/"
-  },
-  "devDependencies": {}
+  }
 }
